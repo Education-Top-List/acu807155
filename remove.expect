@@ -6,11 +6,15 @@ set send_human {.1 .3 1 .05 2}
 spawn bash /home/acunetix/.acunetix/uninstall.sh 
  
 
-expect "Please answer 'yes' or 'no':'"
+expect "Do you want to uninstall Acunetix?
+Please answer 'yes' or 'no':'"
  
 send -h "YES\r"
 
-expect "Please answer 'yes' or 'no':'"
+expect "Do you want to remove the Acunetix data?
+Choose YES to remove the Acunetix Database (including all scan data).
+Choose NO to retain the Acunetix data, which can be used in subsequent installations.
+Please answer 'yes' or 'no':"
 send -h "YES\r"
  
 expect eof
