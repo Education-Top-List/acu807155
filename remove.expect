@@ -8,10 +8,10 @@ spawn bash /home/acunetix/.acunetix/uninstall.sh
 
 expect "Please answer 'yes' or 'no':'"
  
-send -h "YES"
+send -h "YES\r"
 
 expect "Please answer 'yes' or 'no':'"
-send -h "YES"
+send -h "YES\r"
  
 expect eof
 
