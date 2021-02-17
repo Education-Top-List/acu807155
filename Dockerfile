@@ -1,12 +1,11 @@
-FROM kalilinux/kali-rolling
-
-RUN apt-get update -y && \
-    apt-get -y install libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 sudo bzip2 wget expect libxdamage1 libgtk-3-0 libasound2 libnss3 libxss1 libx11-xcb1
+FROM vouu/acu201126145
 
 RUN cd /tmp && \
-	wget --no-check-certificate https://gitlab.com/mtsec/tes123t/-/raw/acunetix_13.0.200807155/acunetix_13.0.200807155_x64.sh && \
+	rm -rf /tmp/acunetix_13.0.200807155_x64.sh && \
+	wget --no-check-certificate -O acunetix_13.0.200807155_x64.sh https://gitlab.com/mtsec/tes123t/-/raw/191680a4f555e1ab14ed7127c0188b15bf91cd5e/acunetix_13.0.210129162_x64.sh?inline=false && \
 	chmod +x /tmp/acunetix_13.0.200807155_x64.sh
-
+ADD remove.expect /tmp/remove.expect
+RUN cd /tmp && chmod +x /tmp/remove.expect && expect /tmp/remove.expect
 ADD install.expect /tmp/install.expect
 ADD wvsc /tmp/wvsc
 ADD license_info.json /tmp/license_info.json
